@@ -3,8 +3,10 @@ const contenedorCartas = document.querySelector("#cartas");
 const botonOrdenarValor = document.querySelector("#ordenarValor");
 const botonOrdenarPalo = document.querySelector("#ordenarPalo");
 
+// Trae las cartas guardadas desde localStorage
 let cartasGuardadas = JSON.parse(localStorage.getItem("cartas")) || [];
 
+// Muestra en pantalla las cartas recibidas
 function mostrarCartasGuardadas(cartas) {
   contenedorCartas.innerHTML = "";
 
@@ -23,6 +25,7 @@ function mostrarCartasGuardadas(cartas) {
   });
 }
 
+// Ordena las cartas guardadas por valor
 function ordenarPorValor() {
   cartasGuardadas.sort((a, b) => {
     return a.value.localeCompare(b.value);
@@ -31,6 +34,7 @@ function ordenarPorValor() {
   mostrarCartasGuardadas(cartasGuardadas);
 }
 
+// Ordena las cartas guardadas por palo
 function ordenarPorPalo() {
   cartasGuardadas.sort((a, b) => {
     return a.suit.localeCompare(b.suit);

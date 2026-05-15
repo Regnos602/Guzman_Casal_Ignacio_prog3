@@ -6,6 +6,7 @@ let mazoId = null;
 let paginaActual = 0;
 let paginas = [];
 
+// Trae las primeras 6 cartas desde la API y guarda el id del mazo
 async function cargarPrimeraPagina() {
     const respuesta = await fetch("https://deckofcardsapi.com/api/deck/new/draw/?count=6");
     const datos = await respuesta.json();
@@ -26,6 +27,7 @@ async function cargarPrimeraPagina() {
     mostrarCartas(cartas);
 }
 
+// Limpia y muestra las cartas recibidas
 function mostrarCartas(cartas) {
     contenedorCartas.innerHTML = "";
 
@@ -35,6 +37,7 @@ function mostrarCartas(cartas) {
     })
 }
 
+// Muestra la pagina siguiente o trae 6 cartas nuevas si todavía no fueron cargadas
 async function paginaSiguiente() {
   if (paginas[paginaActual + 1]) {
     paginaActual++;
@@ -59,6 +62,7 @@ async function paginaSiguiente() {
   }
 }
 
+// Vuelve a la pagina anterior si no estamos en la primera
 function paginaAnterior() {
   if (paginaActual > 0) {
     paginaActual--;

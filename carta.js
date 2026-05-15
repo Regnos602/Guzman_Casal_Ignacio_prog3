@@ -7,10 +7,12 @@ class Carta{
         this.url = url;
     }
 
+    //Convierte la carta en texto JSON para poder guardarla
     toJsonString(){
         return JSON.stringify(this);
     }
 
+    // Crea una carta a partir de un texto JSON
     static createFromJsonString(json) {
         const datos = JSON.parse(json);
 
@@ -23,6 +25,7 @@ class Carta{
         );
     }
 
+    // Crea el elemento HTML que se va a mostrar en la pagina
     createHtmlElement() {
         const div = document.createElement("div");
 
@@ -48,6 +51,7 @@ class Carta{
         return div;
     }
 
+    // Guarda la carta en localStorage para que no se repitan
     static guardarCarta(carta) {
     let cartasGuardadas = JSON.parse(localStorage.getItem("cartas")) || [];
 
