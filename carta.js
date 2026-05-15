@@ -48,6 +48,20 @@ class Carta{
         return div;
     }
 
+    static guardarCarta(carta) {
+    let cartasGuardadas = JSON.parse(localStorage.getItem("cartas")) || [];
+
+    const existe = cartasGuardadas.some(cartaGuardada => {
+      return cartaGuardada.code === carta.code;
+    });
+
+    if (!existe) {
+      cartasGuardadas.push(carta);
+      localStorage.setItem("cartas", JSON.stringify(cartasGuardadas));
+      alert("Carta guardada");
+    } else {
+      alert("Esta carta ya está guardada");
+    }
+
+    }
 }
-
-
