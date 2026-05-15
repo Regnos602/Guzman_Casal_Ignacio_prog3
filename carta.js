@@ -1,9 +1,10 @@
 class Carta{ 
-    constructor(code,value,suit,imagen){
+    constructor(code,value,suit,imagen, url){
         this.code = code;
         this.value = value;
         this.suit = suit;
         this.imagen = imagen;
+        this.url = url;
     }
 
     toJsonString(){
@@ -17,7 +18,8 @@ class Carta{
             datos.code,
             datos.value,
             datos.suit,
-            datos.imagen
+            datos.imagen,
+            datos.url
         );
     }
 
@@ -33,9 +35,19 @@ class Carta{
 
             <p>Valor: ${this.value}</p>
             <p>Palo: ${this.suit}</p>
+
+            <button>Guardar</button>
             `;
+
+        const botonGuardar = div.querySelector("button");
+
+        botonGuardar.addEventListener("click", () => {
+            Carta.guardarCarta(this);
+        });
+
         return div;
     }
+
 }
 
 
